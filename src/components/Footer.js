@@ -37,7 +37,7 @@ function Footer() {
 
       <div className="container">
         <p className="site-footer-copy">
-          &copy; {year} Podcast to Pages. Written first, read always.
+          &copy; {year} Podcast to Pages.
         </p>
       </div>
     </footer>
