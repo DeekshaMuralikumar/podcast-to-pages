@@ -33,13 +33,6 @@ function EpisodeCard({ episode, episodeNumber }) {
 
         <div className="episode-card-meta">
           <span>{episode.readTime} read</span>
-          <span className="episode-card-dot">&bull;</span>
-          <span>
-            {new Date(episode.date).toLocaleDateString(undefined, {
-              month: "short",
-              year: "numeric",
-            })}
-          </span>
         </div>
 
         <div className="episode-card-actions">

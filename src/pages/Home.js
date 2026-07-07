@@ -12,10 +12,7 @@ import useFadeIn from "../hooks/useFadeIn";
  * -----------------------------------------------------------------------
  */
 function Home() {
-  // "Latest" = the most recently published episodes, newest first
-  const latestEpisodes = [...episodes]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 4);
+  const latestEpisodes = episodes.slice(0, 4);
 
   const latestSectionRef = useFadeIn();
 
