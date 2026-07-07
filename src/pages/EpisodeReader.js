@@ -105,14 +105,6 @@ function EpisodeReader() {
           <span className="episode-card-theme">{episode.theme}</span>
           <h1 className="reader-title">{episode.title}</h1>
           <div className="reader-meta">
-            <span>
-              {new Date(episode.date).toLocaleDateString(undefined, {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </span>
-            <span className="episode-card-dot">&bull;</span>
             <span>{episode.readTime} read</span>
           </div>
         </header>
