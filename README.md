@@ -20,6 +20,8 @@ Podcast to Pages is a personal website inspired by my Medium series, where every
 * CSS
 * JavaScript
 
+Deployed - Vercel: https://podcast-to-pages.vercel.app/
+
 ## Read the Original Series
 
 The original **Podcast to Pages** series is published on Medium:
