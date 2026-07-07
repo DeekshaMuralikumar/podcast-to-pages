@@ -1,0 +1,384 @@
+/* =========================================================================
+   home.css
+   Styles for the Hero, the theme carousels, the EpisodeCard used inside
+   them, and the site-wide Footer (rendered on every page).
+   ========================================================================= */
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  padding: 110px 0 90px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3em;
+}
+
+.hero-tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  color: var(--color-accent);
+  margin-bottom: 0.9em;
+}
+
+.hero-subtext {
+  font-size: 1.15rem;
+  color: var(--color-text-soft);
+  margin: 0 auto 2.2em;
+  max-width: 520px;
+}
+
+.hero-cta {
+  font-family: var(--font-heading);
+}
+
+/* Decorative "page edge" strip along the bottom of the hero, evoking the
+   fanned pages of a closed book. */
+.hero-page-edge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: flex;
+}
+
+.hero-page-edge span {
+  flex: 1;
+  background-color: var(--color-accent);
+  opacity: 0.12;
+}
+.hero-page-edge span:nth-child(2) {
+  opacity: 0.2;
+}
+.hero-page-edge span:nth-child(3) {
+  opacity: 0.12;
+}
+
+/* ---------- Section heading shared by "Latest Episodes" & carousels ---------- */
+
+.section-heading {
+  padding: 10px 0 6px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+}
+
+/* ---------- Theme carousels ---------- */
+
+.theme-carousel {
+  padding: 46px 0;
+}
+
+.theme-carousel-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.theme-carousel-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.theme-carousel-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-carousel-controls button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-paper);
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  transition: background-color var(--transition-base), transform var(--transition-base), opacity var(--transition-base);
+}
+
+.theme-carousel-controls button:hover:not(:disabled) {
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+  transform: translateY(-2px);
+}
+
+.theme-carousel-controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.theme-carousel-track {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  padding: 6px 2px 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.theme-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.theme-carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+.theme-carousel-track::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: 999px;
+}
+
+.theme-carousel-item {
+  flex: 0 0 auto;
+  width: min(300px, calc(100vw - 64px));
+  scroll-snap-align: start;
+}
+
+/* ---------- Latest episodes row on home page ---------- */
+
+.latest-episodes-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding-bottom: 50px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .latest-episodes-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .latest-episodes-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Episode card (used in carousels + grid) ---------- */
+
+.episode-card {
+  background-color: var(--color-paper);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.episode-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+
+.episode-card-cover-link {
+  display: block;
+}
+
+.episode-card-cover {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background-color: var(--color-accent-soft);
+  overflow: hidden;
+}
+
+.episode-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.episode-card:hover .episode-card-cover img {
+  transform: scale(1.05);
+}
+
+.episode-card-number {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: rgba(43, 43, 43, 0.55);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.episode-card-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.episode-card-theme {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.episode-card-title {
+  font-size: 1.22rem;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.episode-card-title a:hover {
+  color: var(--color-accent);
+}
+
+.episode-card-description {
+  color: var(--color-text-soft);
+  font-size: 0.98rem;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.episode-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  margin-bottom: 16px;
+}
+
+.episode-card-dot {
+  opacity: 0.5;
+}
+
+.episode-card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.episode-card-action {
+  flex: 1;
+  text-align: center;
+  padding: 9px 0;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.episode-card-action-read {
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+}
+.episode-card-action-read:hover {
+  opacity: 0.88;
+}
+
+.episode-card-action-listen {
+  border: 1.3px solid var(--color-accent);
+  color: var(--color-accent);
+}
+.episode-card-action-listen:hover {
+  background-color: var(--color-accent-soft);
+}
+
+/* ---------- Footer (site-wide) ---------- */
+
+.site-footer {
+  background-color: var(--color-paper);
+  border-top: 1px solid var(--color-border);
+  padding: 46px 0 26px;
+  margin-top: 60px;
+}
+
+.site-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 26px;
+}
+
+.site-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-footer-logo {
+  height: 42px;
+  width: 42px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+}
+
+.site-footer-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.site-footer-tagline {
+  font-style: italic;
+  color: var(--color-text-soft);
+  margin: 2px 0 0;
+  font-size: 0.95rem;
+}
+
+.site-footer-links {
+  display: flex;
+  gap: 26px;
+  font-size: 0.98rem;
+  color: var(--color-text-soft);
+}
+
+.site-footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.site-footer-copy {
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 84px 0 64px;
+  }
+  .theme-carousel-item {
+    width: 78vw;
+  }
+  .site-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

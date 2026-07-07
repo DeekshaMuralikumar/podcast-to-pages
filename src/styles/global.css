@@ -1,0 +1,220 @@
+/* =========================================================================
+   global.css
+   Design tokens + resets shared across the whole site.
+   Palette and type come straight from the project brief:
+     Background : #F8F3E9  (warm paper background)
+     Paper      : #FFFDF8  (card / surface color, slightly brighter paper)
+     Text       : #2B2B2B  (primary ink color)
+     Accent     : #8B6F47  (leather / binding brown)
+   ========================================================================= */
+
+:root {
+  --color-bg: #f8f3e9;
+  --color-paper: #fffdf8;
+  --color-text: #2b2b2b;
+  --color-text-soft: #5a5450;
+  --color-accent: #8b6f47;
+  --color-accent-soft: rgba(139, 111, 71, 0.14);
+  --color-border: rgba(43, 43, 43, 0.1);
+
+  --font-heading: "Playfair Display", "Georgia", serif;
+  --font-body: "Crimson Text", "Georgia", serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-soft: 0 6px 24px rgba(43, 43, 43, 0.08);
+  --shadow-lift: 0 18px 40px rgba(43, 43, 43, 0.16);
+
+  --transition-base: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --max-width: 1160px;
+}
+
+/* Respect reduced-motion preferences across the whole app */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin: 0 0 0.5em 0;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Shared page container: keeps content from stretching edge to edge */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* A "paper" surface used for cards and panels throughout the site */
+.paper-surface {
+  background-color: var(--color-paper);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+}
+
+/* Small accent label used above section headings, e.g. "THEME" */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+
+/* Primary call-to-action button style, reused across pages */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  padding: 12.5px 26px;
+  border-radius: 999px;
+  font-size: 1rem;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+}
+
+/* Fade-in-on-scroll utility. Components add the "in-view" class via
+   IntersectionObserver (see useFadeIn hook usage in pages). */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page wrapper so footer stays at the bottom on short pages */
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1;
+}
+
+/* Focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-accent-soft);
+}
+
+/* ---------- About page ---------- */
+
+.about-page {
+  max-width: 720px;
+  padding-top: 70px;
+  padding-bottom: 100px;
+}
+
+.about-page h1 {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  margin-bottom: 0.6em;
+}
+
+.about-lede {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  margin-bottom: 1.4em;
+}
+
+.about-body {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 2.2em;
+}

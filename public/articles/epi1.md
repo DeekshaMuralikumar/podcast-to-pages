@@ -1,4 +1,4 @@
-**You Outgrow People Without Hating Them.**
+# You Outgrow People Without Hating Them.
 
 Have you ever thought of someone you once couldn’t go a day without talking to and wondered when things changed? Not because of a fight. Not because anyone did something wrong. But because somewhere, the relationship stopped fitting the same way.
 
